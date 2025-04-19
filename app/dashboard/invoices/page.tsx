@@ -6,7 +6,17 @@ import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/app/lib/data';
- 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Acme Dashboard',
+    default: 'Invoices',
+  },
+  description: 'The Invoices page of the official Next.js Learn Dashboard built with App Router.',
+  robots: 'noindex, follow',
+};
+
 export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
