@@ -1,6 +1,6 @@
 import type { NextAuthConfig } from 'next-auth';
- 
-export const authConfig = {
+
+export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/login',
   },
@@ -10,12 +10,27 @@ export const authConfig = {
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnDashboard) {
         if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        return false;
       } else if (isLoggedIn) {
         return Response.redirect(new URL('/dashboard', nextUrl));
       }
       return true;
     },
+
+    async session({ session, token }) {
+      if (session.user && token?.role) {
+        session.user.role = token.role;
+      }
+      return session;
+    },
+
+    async jwt({ token, user }) {
+      // サインイン時、userからroleを取得してtokenに追加
+      if (user) {
+        token.role = user.role ?? 'user';
+      }
+      return token;
+    },
   },
-  providers: [], // Add providers with an empty array for now
-} satisfies NextAuthConfig;
+  providers: [],
+};

@@ -6,6 +6,28 @@ const users = [
     name: 'User',
     email: 'user@nextmail.com',
     password: '123456',
+    role: 'user',
+  },
+  {
+    id: 'dfa8b01f-df57-4dbf-93aa-b45766e7f2f9',
+    name: 'User2',
+    email: 'user2@nextmail.com',
+    password: '123456',
+    role: 'user',
+  },
+  {
+    id: '6a47e57d-2c83-4a0d-9732-d79d47416316',
+    name: 'Admin',
+    email: 'admin@nextmail.com',
+    password: '123456',
+    role: 'admin',
+  },
+  {
+    id: '813730a9-61d1-43c3-b515-df8c8d18e6f3',
+    name: 'Admin2',
+    email: 'admin2@nextmail.com',
+    password: '123456',
+    role: 'admin',
   },
 ];
 
