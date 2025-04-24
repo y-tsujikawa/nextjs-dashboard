@@ -115,6 +115,11 @@ export async function deleteInvoice(id: string) {
   revalidatePath('/dashboard/invoices');
 }
 
+export async function deleteUser(id: string) {
+  await sql`DELETE FROM users WHERE id = ${id}`;
+  revalidatePath('/dashboard/users');
+}
+
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
